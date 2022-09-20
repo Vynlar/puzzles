@@ -44,7 +44,7 @@ function App() {
         if(title.toLowerCase() !== 'login') {
             setMessage({message: "You are not on the Login page", tone: 'red'})
         } else if(registeredUser === null) {
-            setMessage({message: "No user with that email exists", tone: 'red'})
+            setMessage({message: "Email not recognized. Please Register below.", tone: 'red'})
         } else if(registeredUser && email === registeredUser.email && password === registeredUser.password) {
             setSuccess(true)
         }
