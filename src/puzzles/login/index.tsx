@@ -198,6 +198,7 @@ export function LoginIntro() {
                     <strong>Rules:</strong>
                     <ul>
                         <li>No browser dev tools/element inspection. The puzzle is in the UI, not in the code.</li>
+                        <li>Desktop-only: This puzzle was designed for a mouse and keyboard. Touchscreens simply won't work well. If you're on a phone/tablet, find a computer and proceed there.</li>
                     </ul>
                 </div>
 
