@@ -117,23 +117,22 @@ function Page(props: PageProps) {
     }
   }, [buttonRef.current]);
 
-  const [_, setNumClicks] = useState(0);
+  const [numClicks, setNumClicks] = useState(0);
   const timeout = useRef<number | null>(null);
   const navigate = useNavigate();
 
   const clickHandler = () => {
     setNumClicks((prevNum) => {
-      if (prevNum === 9) {
-        // YOU WIN
-        navigate("../win");
-        return 0;
-      }
       if (timeout.current) {
         clearTimeout(timeout.current);
       }
       timeout.current = setTimeout(() => {
-        setNumClicks(0);
-      }, 3000);
+        if (numClicks === 9) {
+          navigate("../win");
+        } else {
+          setNumClicks(0);
+        }
+      }, 1500);
       return prevNum + 1;
     });
   };
