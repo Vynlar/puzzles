@@ -2,6 +2,7 @@ import { LoginIntro, LoginPuzzle } from "./puzzles/login";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Welcome } from "./welcome";
 import { OmbrePuzzle } from "./puzzles/ombre";
+import { OmbreIntro } from "./puzzles/ombre/intro";
 
 import "./App.css";
 import { OmbreWin } from "./puzzles/ombre/win";
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <OmbreIntro />,
+      },
+      {
+        path: "play",
         element: <OmbrePuzzle />,
       },
       {
