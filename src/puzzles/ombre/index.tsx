@@ -1,4 +1,10 @@
-import { useState, useRef, useLayoutEffect } from "react";
+import {
+  useState,
+  useRef,
+  useLayoutEffect,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import { useMove } from "@react-aria/interactions";
 import "./ombre.css";
 import metro from "./assets/metro.jpg";
@@ -16,7 +22,13 @@ const cx = <T extends CxOptions>(...classes: T): CxReturn =>
   // @ts-ignore
   classes.flat(Infinity).filter(Boolean).join(" ");
 
-function Button({ isDark, setDarkMode, buttonRef }) {
+interface ButtonProps {
+  isDark: boolean;
+  setDarkMode: Dispatch<SetStateAction<boolean>>;
+  buttonRef?: React.Ref<HTMLButtonElement>;
+}
+
+function Button({ isDark, setDarkMode, buttonRef }: ButtonProps) {
   return (
     <div
       className={cx(isDark ? "dark" : "light", "absolute z-20")}
@@ -76,11 +88,18 @@ function Button({ isDark, setDarkMode, buttonRef }) {
   );
 }
 
-function Page(props) {
+interface PageProps {
+  isDark: boolean;
+  isInCircle: boolean;
+  setDarkMode: Dispatch<SetStateAction<boolean>>;
+  setCirclePosition: (fn: (pos: [number, number]) => [number, number]) => void;
+}
+
+function Page(props: PageProps) {
   const { isDark, isInCircle, setCirclePosition } = props;
   const { moveProps } = useMove({
     onMove: (e) => {
-      setCirclePosition(([x, y]) => {
+      setCirclePosition(([x, y]: [number, number]) => {
         x += e.deltaX;
         y += e.deltaY;
         return [x, y];
@@ -98,7 +117,7 @@ function Page(props) {
     }
   }, [buttonRef.current]);
 
-  const [numClicks, setNumClicks] = useState(0);
+  const [_, setNumClicks] = useState(0);
   const timeout = useRef<number | null>(null);
   const navigate = useNavigate();
 
@@ -108,7 +127,7 @@ function Page(props) {
         // YOU WIN
         console.log("YOU WIN");
         navigate("win");
-        return;
+        return 0;
       }
       if (timeout.current) {
         clearTimeout(timeout.current);
@@ -272,7 +291,7 @@ export function OmbrePuzzle() {
   const circleRef = useRef<HTMLDivElement>(null);
   const circlePos = useRef<[number, number]>([-9999, -9999]);
 
-  function setCirclePosition(fn) {
+  function setCirclePosition(fn: (pos: [number, number]) => [number, number]) {
     const pos = fn(circlePos.current);
     if (circleRef && circleRef.current) {
       circleRef.current.style.clipPath = `circle(${SIZE}px at ${pos[0]}px ${pos[1]}px)`;
