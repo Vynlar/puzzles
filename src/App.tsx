@@ -1,9 +1,10 @@
-import { LoginIntro, LoginPuzzle } from './puzzles/login'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { Welcome } from './welcome'
-import { OmbrePuzzle } from './puzzles/ombre'
+import { LoginIntro, LoginPuzzle } from "./puzzles/login";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Welcome } from "./welcome";
+import { OmbrePuzzle } from "./puzzles/ombre";
 
-import './App.css'
+import "./App.css";
+import { OmbreWin } from "./puzzles/ombre/win";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +21,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/ombre",
-    element: <OmbrePuzzle />,
+    children: [
+      {
+        index: true,
+        element: <OmbrePuzzle />,
+      },
+      {
+        path: "win",
+        element: <OmbreWin />,
+      },
+    ],
   },
-])
-
+]);
 
 export default function App() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }

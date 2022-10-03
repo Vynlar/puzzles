@@ -4,6 +4,7 @@ import "./ombre.css";
 import metro from "./assets/metro.jpg";
 import sketchbook from "./assets/sketchbook.jpg";
 import roofLine from "./assets/roof_line.jpg";
+import { useNavigate } from "react-router-dom";
 
 type ClassValue = string | null | undefined | ClassValue[];
 type CxOptions = ClassValue[];
@@ -97,6 +98,28 @@ function Page(props) {
     }
   }, [buttonRef.current]);
 
+  const [numClicks, setNumClicks] = useState(0);
+  const timeout = useRef<number | null>(null);
+  const navigate = useNavigate();
+
+  const clickHandler = () => {
+    setNumClicks((prevNum) => {
+      if (prevNum === 9) {
+        // YOU WIN
+        console.log("YOU WIN");
+        navigate("win");
+        return;
+      }
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
+      timeout.current = setTimeout(() => {
+        setNumClicks(0);
+      }, 3000);
+      return prevNum + 1;
+    });
+  };
+
   return (
     <>
       <div
@@ -112,17 +135,31 @@ function Page(props) {
               "bg-white dark:bg-black text-black dark:text-white h-screen flex flex-col relative",
             ])}
           >
-            <div className="bg-green-500 text-black py-1 flex justify-center">
+            <div className="bg-green-500 text-black dark:text-white py-1 flex justify-center">
               <p
-                className="whitespace-nowrap font-bold text-xs uppercase overflow-hidden"
+                className="whitespace-nowrap font-bold text-xs uppercase overflow-hidden text-center"
                 aria-hidden="true"
               >
-                {"light dark bright dim sun shade on off ".repeat(30)}
+                {Array(5)
+                  .fill(
+                    <>
+                      <span className="glowy-light">l</span>ight dar
+                      <span className="glowy-light">k</span> br
+                      <span className="glowy-light">i</span>ght dim sunny{" "}
+                      <span className="glowy-light">c</span>loudy on off clear
+                      obs
+                      <span className="glowy-light">c</span>ure{" "}
+                    </>
+                  )
+                  .flat()}
               </p>
             </div>
             <div className="flex-1 flex flex-col px-8 w-full max-w-screen-lg mx-auto justify-center">
               <div className="relative z-10 space-y-8">
-                <h1 className="block font-bold text-[60px] md:text-[120px] leading-none">
+                <h1
+                  className="block font-bold text-[60px] md:text-[120px] leading-none select-none"
+                  onClick={clickHandler}
+                >
                   ombre
                 </h1>
                 <div className="block">
@@ -141,7 +178,10 @@ function Page(props) {
                   </p>
                 </div>
               </div>
-              <div className="bg-green-500 rounded-tr-[20px] w-24 h-24 md:h-36 md:w-36 absolute transform -translate-y-10 -translate-x-4 " />
+              <div
+                className="bg-green-500 rounded-tr-[20px] w-24 h-24 md:h-36 md:w-36 absolute transform -translate-y-10 -translate-x-4 "
+                onClick={clickHandler}
+              />
             </div>
           </div>
         </div>
@@ -209,6 +249,17 @@ function Page(props) {
               </div>
             </div>
           </div>
+        </div>
+        <div className={isDark ? "dark" : "light"}>
+          <footer className="text-sm text-center py-12 italic bg-white dark:bg-black text-black dark:text-white">
+            A puzzle by{" "}
+            <a
+              className="underline text-green-600"
+              href="https://adrianaleixandre.com"
+            >
+              Adrian Aleixandre
+            </a>
+          </footer>
         </div>
       </div>
     </>
