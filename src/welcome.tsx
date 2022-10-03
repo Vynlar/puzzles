@@ -15,6 +15,17 @@ export function Welcome() {
                         A website login form with a twist. Can you make it?
                     </p>
                 </li>
+
+                <li className='py-2 px-4 bg-gray-100'>
+                    <a href="/ombre">
+                        <h2 className="font-bold text-blue-500">
+                            Ombre Design Studio
+                        </h2>
+                    </a>
+                    <p>
+                        Something is off about this website -- what could it be?
+                    </p>
+                </li>
             </ul>
         </div>
 

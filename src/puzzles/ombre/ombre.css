@@ -1,0 +1,9 @@
+.flashlight .dark .glowy-dark {
+  color: rgb(34 197 94);
+  text-shadow: 0 0 3px #fff;
+}
+
+.flashlight .light .glowy-light {
+  color: rgb(34 197 94);
+  text-shadow: 0 0 3px rgb(34 197 94);
+}
