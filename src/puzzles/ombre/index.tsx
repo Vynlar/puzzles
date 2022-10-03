@@ -125,8 +125,7 @@ function Page(props: PageProps) {
     setNumClicks((prevNum) => {
       if (prevNum === 9) {
         // YOU WIN
-        console.log("YOU WIN");
-        navigate("win");
+        navigate("../win");
         return 0;
       }
       if (timeout.current) {
