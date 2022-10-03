@@ -162,12 +162,26 @@ function Page(props: PageProps) {
                 {Array(5)
                   .fill(
                     <>
-                      <span className="glowy-light">l</span>ight dar
-                      <span className="glowy-light">k</span> br
-                      <span className="glowy-light">i</span>ght dim sunny{" "}
-                      <span className="glowy-light">c</span>loudy on off clear
-                      obs
-                      <span className="glowy-light">c</span>ure{" "}
+                      <span className="glowy-green glowy-light glowy-dark">
+                        l
+                      </span>
+                      ight dar
+                      <span className="glowy-green glowy-light glowy-dark">
+                        k
+                      </span>{" "}
+                      br
+                      <span className="glowy-green glowy-light glowy-dark">
+                        i
+                      </span>
+                      ght dim sunny{" "}
+                      <span className="glowy-green glowy-light glowy-dark">
+                        c
+                      </span>
+                      loudy on off clear obs
+                      <span className="glowy-green glowy-light glowy-dark">
+                        c
+                      </span>
+                      ure{" "}
                     </>
                   )
                   .flat()}
@@ -183,17 +197,17 @@ function Page(props: PageProps) {
                 </h1>
                 <div className="block">
                   <p className="tracking-widest">
-                    con<span className="glowy-light">t</span>e
-                    <span className="glowy-light">m</span>porary de
-                    <span className="glowy-dark">s</span>
-                    <span className="glowy-light">i</span>gn coll
-                    <span className="glowy-dark">e</span>ctive
+                    con<span className="glowy-green glowy-light">t</span>e
+                    <span className="glowy-green glowy-light">m</span>porary de
+                    <span className="glowy-green glowy-dark">s</span>
+                    <span className="glowy-green glowy-light">i</span>gn coll
+                    <span className="glowy-green glowy-dark">e</span>ctive
                   </p>
                   <p className="text-gray-500">
-                    where <span className="glowy-light">l</span>i
-                    <span className="glowy-dark">g</span>ht and shad
-                    <span className="glowy-dark">o</span>w{" "}
-                    <span className="glowy-light">o</span>riginate
+                    where <span className="glowy-blue glowy-light">l</span>i
+                    <span className="glowy-blue glowy-dark">g</span>ht and shad
+                    <span className="glowy-blue glowy-dark">o</span>w{" "}
+                    <span className="glowy-blue glowy-light">o</span>riginate
                   </p>
                 </div>
               </div>

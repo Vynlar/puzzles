@@ -1,9 +1,17 @@
+.glowy-green {
+  --glow-color: rgb(34 197 94);
+}
+
+.glowy-blue {
+  --glow-color: #3b82f6;
+}
+
 .flashlight .dark .glowy-dark {
-  color: rgb(34 197 94);
+  color: var(--glow-color);
   text-shadow: 0 0 3px #fff;
 }
 
 .flashlight .light .glowy-light {
-  color: rgb(34 197 94);
-  text-shadow: 0 0 3px rgb(34 197 94);
+  color: var(--glow-color);
+  text-shadow: 0 0 3px var(--glow-color);
 }
