@@ -11,6 +11,7 @@ import metro from "./assets/metro.jpg";
 import sketchbook from "./assets/sketchbook.jpg";
 import roofLine from "./assets/roof_line.jpg";
 import { useNavigate } from "react-router-dom";
+import { trackSolve } from "../../track";
 
 type ClassValue = string | null | undefined | ClassValue[];
 type CxOptions = ClassValue[];
@@ -128,6 +129,7 @@ function Page(props: PageProps) {
       }
       timeout.current = setTimeout(() => {
         if (numClicks === 9) {
+          trackSolve("ombre");
           navigate("../win");
         } else {
           setNumClicks(0);

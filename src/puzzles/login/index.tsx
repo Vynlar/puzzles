@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { trackSolve } from "../../track";
 
 interface User {
   email: string;
@@ -69,6 +70,7 @@ export function LoginPuzzle() {
       email === registeredUser.email &&
       password === registeredUser.password
     ) {
+      trackSolve("login");
       setSuccess(true);
     } else {
       setMessage({ message: "Password is incorrect", tone: "red" });
