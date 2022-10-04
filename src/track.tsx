@@ -1,5 +1,9 @@
 export function track(event: string, data?: object) {
-  (window as any).umami?.trackEvent(event, data);
+  if (import.meta.env.PROD) {
+    (window as any).umami?.trackEvent(event, data);
+  } else {
+    console.log("Skipping track event: ", event, data);
+  }
 }
 
 export function trackSolve(puzzle: string) {

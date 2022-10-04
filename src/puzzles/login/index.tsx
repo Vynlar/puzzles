@@ -121,6 +121,9 @@ export function LoginPuzzle() {
               <div className="space-y-3">
                 <h1 className="text-2xl font-bold">Congratulations!</h1>
                 <p>You solved the puzzle.</p>
+                <Link className="underline" to="/">
+                  More puzzles &gt;
+                </Link>
               </div>
             ) : (
               <>
