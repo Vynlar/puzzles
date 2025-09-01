@@ -25,6 +25,9 @@ COPY --from=build /app/dist /usr/share/nginx/html
 # Configure Nginx to work with a single page app
 COPY nginx.conf /etc/nginx/nginx.conf
 
+# Remove default nginx config that conflicts with our custom config
+RUN rm /etc/nginx/conf.d/default.conf
+
 # Expose port 80
 EXPOSE 80
 
